@@ -12,7 +12,11 @@ class kategori extends CI_Controller {
     public function index()
     {
         $data['kategori'] = $this->kategori_model->get_all();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('kategori/index', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function tambah()
