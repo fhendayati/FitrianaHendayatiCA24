@@ -48,6 +48,7 @@ class produk extends CI_Controller {
         ];
 
         $this->produk_model->insert($data);
+        $this->session->set_flashdata('success', 'Produk berhasil ditambahkan!');
         redirect('produk');
     }
 
@@ -84,7 +85,7 @@ class produk extends CI_Controller {
                 'kategori_id' => $this->input->post('kategori_id')
             ];
             $this->produk_model->update($id, $data);
-            $this->session->set_flashdata('success', 'Data berhasil di-update!');
+            $this->session->set_flashdata('success', 'Produk berhasil di-update!');
             redirect('produk'); 
         }
     }
@@ -95,7 +96,7 @@ class produk extends CI_Controller {
     public function hapus($id)
     {
         $this->produk_model->delete($id);
-        $this->session->set_flashdata('success', "Data berhasil dihapus!");
+        $this->session->set_flashdata('success', "Produk berhasil dihapus!");
         redirect('produk');
     }
 

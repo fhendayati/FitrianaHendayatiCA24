@@ -38,15 +38,27 @@ class kategori extends CI_Controller {
         ];
 
         $this->kategori_model->insert($data);
+        $this->session->set_flashdata('success', 'Kategori berhasil ditambahkan!');
         redirect('kategori');
     }
 
     public function hapus($id)
     {
-        $this->kategori_model->delete($id);
-        $this->session->set_flashdata('success', "Data berhasil dihapus!");
+        // cek apakah kategori dipakai di tabel produk
+        $this->db->where('kategori_id', $id);
+        $cek = $this->db->get('produk')->num_rows();
+
+        if ($cek > 0) {
+            // kalau masih dipakai
+            $this->session->set_flashdata('error', 'Kategori tidak bisa dihapus karena masih digunakan produk');
+        } else {
+            // kalau aman
+            $this->kategori_model->delete($id);
+            $this->session->set_flashdata('success', 'Kategori berhasil dihapus!');
+        }
         redirect('kategori');
     }
+
 
     public function edit($id)
     {
@@ -72,7 +84,7 @@ class kategori extends CI_Controller {
                 'nama_kategori' => $this->input->post('nama_kategori')
             ];
             $this->kategori_model->update($id, $data);
-            $this->session->set_flashdata('success', 'Data berhasil di-update!');
+            $this->session->set_flashdata('success', 'Kategori berhasil di-update!');
             redirect('kategori'); 
         }
     }

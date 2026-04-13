@@ -8,7 +8,7 @@
     <li class="nav-item dropdown no-arrow">
         <a class ="nav-link dropdown-toogle" href="#" id="userDropdown" role="button" data-toogle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-            <img class="img-profile rounded-circle" src="<?= base_url('assets/img/undraw_profile_2.svg')?>" width="40">
+            <img class="img-profile rounded-circle" src="<?= base_url('assets/img/ProfilAdmin.jpeg')?>" width="40" height="40">
         </a>
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">
