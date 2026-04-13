@@ -22,6 +22,16 @@
         </a>
     </li>
 
+    <li class="nav-item active">
+        <a class="nav-link" href="<?= site_url('produk') ?>">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Produk</span>
+        </a>
+    </li>
+
     <hr class="sidebar-divider d-none d-md-block">
 
 </ul>
+
+<div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">

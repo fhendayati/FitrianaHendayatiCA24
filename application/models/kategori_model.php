@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('NO direct script access allowed');
 
-class Kategori_model extends CI_Model {
+class kategori_model extends CI_Model {
 
     private $table = 'kategori';
 
@@ -11,10 +11,29 @@ class Kategori_model extends CI_Model {
         return $this->db->get($this->table)->result();
     }
 
-    // Insert data
+    public function get_by_id($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->get('kategori')->row();
+    }
+
+    // Insert (tambah) data
     public function insert($data)
     {
         return $this->db->insert($this->table, $data);
+    }
+
+    // Delete (hapus) data
+    public function delete($id)
+    {
+        return $this->db->delete($this->table, ['id' => $id]);
+    }
+
+    // Update (edit) data
+    public function update($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
     }
 }
 ?>
