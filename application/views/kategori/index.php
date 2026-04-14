@@ -20,7 +20,7 @@
     </div>
 <?php endif; ?>
 
-<table class="table table-bordered" width="100%" cellspasing="0" id="dataTable">
+<table class="table table-bordered" width="100%" cellspacing="0" id="dataTable">
     <thead>
     <tr align="center">
         <th>No</th>

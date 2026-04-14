@@ -23,9 +23,9 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="<?= site_url('produk') ?>">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Produk</span>
+        <a class="nav-link" href="<?= site_url('anggota') ?>">
+            <i class="fas fa-users"></i>
+            <span>Anggota</span>
         </a>
     </li>
 

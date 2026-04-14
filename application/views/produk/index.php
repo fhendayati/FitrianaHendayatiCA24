@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-<h2 class="h3 mb-4 text-gray-800">Data Produk</h2>
+<h2 class="h3 mb-4 text-gray-800">Data Buku</h2>
 
 <a href="<?= site_url('produk/tambah'); ?>" class="btn btn-primary mb-3">Tambah</a>
 
@@ -14,12 +14,11 @@
     </div>
 <?php endif; ?>
 
-<table class="table table-bordered" width="100%" cellspasing="0" id="dataTable">
+<table class="table table-bordered" width="100%" cellspacing="0" id="dataTable">
     <thead>
         <tr align="center">
             <th>No</th>
             <th>Nama Produk</th>
-            <th>Harga (Rp)</th>
             <th>Kategori</th>
             <th>Aksi</th>
         </tr>
@@ -30,7 +29,6 @@
         <tr>
             <td align="center"><?= $no++; ?></td>
             <td><?= $p->nama_produk; ?></td>
-            <td align="right"><?= number_format($p->harga); ?></td>
             <td align="center"><?= $p->nama_kategori; ?></td>
 
             <td align="center">

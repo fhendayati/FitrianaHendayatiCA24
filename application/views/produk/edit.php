@@ -18,14 +18,6 @@
                class="form-control" required>
     </div>
 
-    <!-- Harga -->
-    <div class="form-group">
-        <label>Harga</label>
-        <input type="number" name="harga" 
-               value="<?= $produk->harga ?>" 
-               class="form-control" required>
-    </div>
-
     <!-- Dropdown Kategori -->
     <div class="form-group">
         <label>Kategori</label>
