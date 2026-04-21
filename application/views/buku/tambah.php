@@ -1,16 +1,16 @@
 <div class="container-fluid">
 
-<h2 class="h3 mb-4 text-gray-800">Tambah Produk</h2>
+<h2 class="h3 mb-4 text-gray-800">Tambah Buku</h2>
 
 <div class="card shadow">
     <div class="card-body">
 
-<form method="post" action="<?= site_url('produk/simpan'); ?>">
+<form method="post" action="<?= site_url('buku/simpan'); ?>">
 
-    <!-- Nama Produk -->
+    <!-- Nama Buku -->
     <div class="form-group">
-        <label>Nama Produk</label>
-        <input type="text" name="nama_produk" class="form-control" required>
+        <label>Nama Buku</label>
+        <input type="text" name="nama_buku" class="form-control" required>
     </div>
 
     <!-- Harga -->
@@ -34,7 +34,7 @@
 
     <!-- Tombol -->
     <button type="submit" class="btn btn-primary">Simpan</button>
-    <a href="<?= site_url('produk'); ?>" class="btn btn-secondary">Kembali</a>
+    <a href="<?= site_url('buku'); ?>" class="btn btn-secondary">Kembali</a>
 
 </form>
 

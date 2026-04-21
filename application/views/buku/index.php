@@ -2,7 +2,7 @@
 
 <h2 class="h3 mb-4 text-gray-800">Data Buku</h2>
 
-<a href="<?= site_url('produk/tambah'); ?>" class="btn btn-primary mb-3">Tambah</a>
+<a href="<?= site_url('buku/tambah'); ?>" class="btn btn-primary mb-3">Tambah</a>
 
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -18,27 +18,27 @@
     <thead>
         <tr align="center">
             <th>No</th>
-            <th>Nama Produk</th>
+            <th>Nama Buku</th>
             <th>Kategori</th>
             <th>Aksi</th>
         </tr>
     </thead>
 
     <tbody>
-        <?php $no = 1; foreach ($produk as $p): ?>
+        <?php $no = 1; foreach ($buku as $b): ?>
         <tr>
             <td align="center"><?= $no++; ?></td>
-            <td><?= $p->nama_produk; ?></td>
-            <td align="center"><?= $p->nama_kategori; ?></td>
+            <td><?= $b->nama_buku; ?></td>
+            <td align="center"><?= $b->nama_kategori; ?></td>
 
             <td align="center">
-                <a href="<?= site_url('produk/edit/'.$p->id); ?>" class="btn btn-warning btn-sm">Edit</a>
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal<?= $p->id ?>">Hapus</button>
+                <a href="<?= site_url('buku/edit/'.$b->id); ?>" class="btn btn-warning btn-sm">Edit</a>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal<?= $b->id ?>">Hapus</button>
             </td>
         </tr>
 
         <!-- Modal Hapus -->
-        <div class="modal fade" id="hapusModal<?= $p->id ?>" tabindex="-1">
+        <div class="modal fade" id="hapusModal<?= $b->id ?>" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -48,7 +48,7 @@
             </div>
 
             <div class="modal-body">
-                Yakin mau hapus produk <b><?= $p->nama_produk ?></b>?
+                Yakin mau hapus buku <b><?= $b->nama_buku ?></b>?
             </div>
 
             <div class="modal-footer">
@@ -56,7 +56,7 @@
                     Batal
                 </button>
 
-                <a href="<?= site_url('produk/hapus/'.$p->id); ?>" 
+                <a href="<?= site_url('buku/hapus/'.$b->id); ?>" 
                 class="btn btn-danger">
                 Hapus
                 </a>

@@ -1,20 +1,20 @@
 <div class="container-fluid">
 
-<h2 class="h3 mb-4 text-gray-800">Edit Produk</h2>
+<h2 class="h3 mb-4 text-gray-800">Edit Buku</h2>
 
 <div class="card shadow">
     <div class="card-body">
 
-<form method="post" action="<?= site_url('produk/update/'.$produk->id); ?>">
+<form method="post" action="<?= site_url('buku/update/'.$buku->id); ?>">
 
     <!-- ID (hidden) -->
-    <input type="hidden" name="id" value="<?= $produk->id ?>">
+    <input type="hidden" name="id" value="<?= $buku->id ?>">
 
-    <!-- Nama Produk -->
+    <!-- Nama Buku -->
     <div class="form-group">
-        <label>Nama Produk</label>
-        <input type="text" name="nama_produk" 
-               value="<?= $produk->nama_produk ?>" 
+        <label>Nama Buku</label>
+        <input type="text" name="nama_buku" 
+               value="<?= $buku->nama_buku ?>" 
                class="form-control" required>
     </div>
 
@@ -27,7 +27,7 @@
 
             <?php foreach ($kategori as $k): ?>
                 <option value="<?= $k->id ?>"
-                    <?= ($k->id == $produk->kategori_id) ? 'selected' : '' ?>>
+                    <?= ($k->id == $buku->kategori_id) ? 'selected' : '' ?>>
                     
                     <?= $k->nama_kategori ?>
                     
@@ -39,7 +39,7 @@
 
     <!-- Tombol -->
     <button type="submit" class="btn btn-primary">Update</button>
-    <a href="<?= site_url('produk'); ?>" class="btn btn-secondary">Kembali</a>
+    <a href="<?= site_url('buku'); ?>" class="btn btn-secondary">Kembali</a>
 
 </form>
 

@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('NO direct script access allowed');
 
-class produk_model extends CI_Model {
+class buku_model extends CI_Model {
 
-    private $table = 'produk';
+    private $table = 'buku';
 
     // =======================
     // TAMPIL SEMUA DATA
     // =======================
     public function get_all()
     {
-        $this->db->select('produk.*,kategori.nama_kategori');
-        $this->db->from('produk'); 
-        $this->db->join('kategori', 'kategori.id = produk.kategori_id');
+        $this->db->select('buku.*,kategori.nama_kategori');
+        $this->db->from('buku'); 
+        $this->db->join('kategori', 'kategori.id = buku.kategori_id');
 
         return $this->db->get()->result(); // karena sudah pakai join, jadi tidak perlu get($this->table)
     }
@@ -23,7 +23,7 @@ class produk_model extends CI_Model {
     public function get_by_id($id)
     {
         $this->db->where('id', $id);
-        return $this->db->get('produk')->row();
+        return $this->db->get('buku')->row();
     }
 
     // =======================
