@@ -15,8 +15,8 @@
 
     <!-- Harga -->
     <div class="form-group">
-        <label>Harga</label>
-        <input type="number" name="harga" class="form-control" required>
+        <label>Stok</label>
+        <input type="number" name="stok" class="form-control" required>
     </div>
 
     <!-- Kategori (Dropdown) -->

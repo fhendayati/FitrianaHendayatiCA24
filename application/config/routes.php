@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'helloIpit';
+$route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['login'] = 'auth';
+$route['login/proses'] = 'auth/login'; //'login/proses' adalah penamaannya di login | 'auth/login' adalah controller dan function yang dipanggil
+$route['logout'] = 'auth/logout';

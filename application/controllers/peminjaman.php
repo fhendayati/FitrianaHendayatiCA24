@@ -1,0 +1,62 @@
+<?php
+defined('BASEPATH') OR exit('NO direct script access allowed');
+
+class peminjaman extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata('login')){
+            redirect('login');
+        }
+        $this->load->model('peminjaman_model');
+    }
+
+    public function index()
+    {
+        $data['data'] = $this->peminjaman_model->get_all();
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('peminjaman/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah()
+    {
+        $batas = date('Y-m-d', strtotime('-1 year'));
+        $data['anggota'] = $this->db->where('tanggal_daftar >=', $batas)->get('anggota')->result();
+        $data['buku'] = $this->db->get('buku')->result();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('peminjaman/tambah', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function simpan()
+    {
+        $data = [
+            'kode_peminjaman' => uniqid('PMJ-'),
+            'anggota_id' => $this->input->post('anggota_id'),
+            'tanggal_pinjam' => date('Y-m-d'),
+            'tanggal_jatuh_tempo' => $this->input->post('tanggal_jatuh_tempo'),
+            'status' => 'dipinjam',
+            'user_id' => $this->session->userdata('id_user')
+        ];
+        $buku_id = $this->input->post('buku_id');
+
+        $this->peminjaman_model->insert($data, $buku_id);
+        $this->session->set_flashdata('success', 'Peminjaman Baru berhasil ditambahkan!');
+        redirect('peminjaman');
+    }
+
+    public function kembali($id)
+    {
+        $this->peminjaman_model->pengembalian($id);
+        $this->session->set_flashdata('success', 'Peminjaman sudah dikembalikan!');
+        redirect('peminjaman');
+    }
+}
+?>

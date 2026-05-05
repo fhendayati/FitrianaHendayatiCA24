@@ -7,6 +7,9 @@ class anggota extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('anggota_model');
+        if (!$this->session->userdata('login')){
+            redirect('login');
+        }
     }
 
     // =======================
@@ -39,8 +42,11 @@ class anggota extends CI_Controller {
     // =======================
     public function simpan()
     {
+        // generate kode acak
+            $nomor_anggota = 'AGT-' . strtoupper(substr(md5(uniqid(rand(), true)), 0, 6));
+
         $data = [
-            'nomor_anggota' => $this->input->post('nomor_anggota'),
+            'nomor_anggota' => $nomor_anggota,
             'nama_anggota' => $this->input->post('nama_anggota'),
             'alamat' => $this->input->post('alamat'),
             'telp_anggota' => $this->input->post('telp_anggota'),
@@ -72,7 +78,6 @@ class anggota extends CI_Controller {
     public function update($id)
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nomor_anggota', 'Nomor Anggota', 'required');
         $this->form_validation->set_rules('nama_anggota', 'Nama Anggota', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('telp_anggota', 'Telepon', 'required');
@@ -83,7 +88,6 @@ class anggota extends CI_Controller {
 
         }else {
             $data = [
-                'nomor_anggota' => $this->input->post('nomor_anggota'),
                 'nama_anggota' => $this->input->post('nama_anggota'),
                 'alamat' => $this->input->post('alamat'),
                 'telp_anggota' => $this->input->post('telp_anggota'),

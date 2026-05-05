@@ -9,8 +9,9 @@
         <div class="table-responsive">
 
 <?php if ($this->session->flashdata('success')): ?>
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show">
         <?= $this->session->flashdata('success'); ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
 <?php endif; ?>
 
@@ -18,8 +19,10 @@
     <thead>
         <tr align="center">
             <th>No</th>
-            <th>Nama Buku</th>
+            <th>Judul Buku</th>
+            <th>Stok</th>
             <th>Kategori</th>
+            <th>Status</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -29,8 +32,15 @@
         <tr>
             <td align="center"><?= $no++; ?></td>
             <td><?= $b->nama_buku; ?></td>
+            <td align="center"><?= $b->stok; ?></td>
             <td align="center"><?= $b->nama_kategori; ?></td>
-
+            <td align="center">
+                <?php if($b->stok > 0): ?>
+                    <span class="badge badge-success">Tersedia</span>
+                <?php else: ?>
+                    <span class="badge badge-danger">Tidak Tersedia</span>
+                <?php endif; ?>
+            </td>
             <td align="center">
                 <a href="<?= site_url('buku/edit/'.$b->id); ?>" class="btn btn-warning btn-sm">Edit</a>
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal<?= $b->id ?>">Hapus</button>

@@ -8,6 +8,9 @@ class buku extends CI_Controller {
         parent::__construct();
         $this->load->model('buku_model');
         $this->load->model('kategori_model'); // untuk dropdown kategori
+        if (!$this->session->userdata('login')){
+            redirect('login');
+        }
     }
 
     // =======================
@@ -72,6 +75,7 @@ class buku extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama_buku', 'Nama Buku', 'required');
+        $this->form_validation->set_rules('stok', 'Stok', 'required');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required');
 
         if($this->form_validation->run()==FALSE){
@@ -79,6 +83,7 @@ class buku extends CI_Controller {
         }else {
             $data = [
                 'nama_buku' => $this->input->post('nama_buku'),
+                'stok' => $this->input->post('stok'),
                 'kategori_id' => $this->input->post('kategori_id')
             ];
             $this->buku_model->update($id, $data);

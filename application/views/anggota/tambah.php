@@ -8,11 +8,6 @@
 <form method="post" action="<?= site_url('anggota/simpan'); ?>">
 
     <div class="form-group">
-        <label>Nomor Anggota</label>
-        <input type="text" name="nomor_anggota" class="form-control" required>
-    </div>
-
-    <div class="form-group">
         <label>Nama Anggota</label>
         <input type="text" name="nama_anggota" class="form-control" required>
     </div>

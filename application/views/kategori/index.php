@@ -9,14 +9,16 @@
         <div class="table-responsive">
 
 <?php if ($this->session->flashdata('error')): ?>
-    <div class="alert alert-danger">
+    <div class="alert alert-success alert-dismissible fade show">
         <?= $this->session->flashdata('error'); ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('success')): ?>
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show">
         <?= $this->session->flashdata('success'); ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
 <?php endif; ?>
 
@@ -24,7 +26,7 @@
     <thead>
     <tr align="center">
         <th>No</th>
-        <th>Nama Kategori</th>
+        <th>Kategori</th>
         <th>Aksi</th>
     </tr>
     </thead>

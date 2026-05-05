@@ -11,15 +11,6 @@
     <input type="hidden" name="id" value="<?= $anggota->id ?>">
 
     <div class="form-group">
-        <label>Nomor Anggota</label>
-        <input type="text" 
-            value="<?= $anggota->nomor_anggota ?>" 
-            class="form-control" readonly>
-    </div>
-
-    <input type="hidden" name="nomor_anggota" value="<?= $anggota->nomor_anggota ?>">
-
-    <div class="form-group">
         <label>Nama Anggota</label>
         <input type="text" name="nama_anggota" 
                value="<?= $anggota->nama_anggota ?>" 

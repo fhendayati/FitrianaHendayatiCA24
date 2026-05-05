@@ -18,6 +18,14 @@
                class="form-control" required>
     </div>
 
+    <!-- Nama Buku -->
+    <div class="form-group">
+        <label>Stok</label>
+        <input type="number" name="stok" 
+               value="<?= $buku->stok ?>" 
+               class="form-control" required>
+    </div>
+
     <!-- Dropdown Kategori -->
     <div class="form-group">
         <label>Kategori</label>
