@@ -19,7 +19,9 @@
     <thead>
         <tr align="center">
             <th>No</th>
+            <th>Kode Buku</th>
             <th>Judul Buku</th>
+            <th>Penulis</th>
             <th>Stok</th>
             <th>Kategori</th>
             <th>Status</th>
@@ -31,7 +33,9 @@
         <?php $no = 1; foreach ($buku as $b): ?>
         <tr>
             <td align="center"><?= $no++; ?></td>
+            <td align="center"><?= $b->kode_buku; ?></td>
             <td><?= $b->nama_buku; ?></td>
+            <td><?= $b->penulis; ?></td>
             <td align="center"><?= $b->stok; ?></td>
             <td align="center"><?= $b->nama_kategori; ?></td>
             <td align="center">

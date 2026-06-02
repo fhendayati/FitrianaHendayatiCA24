@@ -51,9 +51,13 @@
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 placeholder="Username" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="position:relative;">
                                             <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
+                                            <span onclick="togglePassword()" 
+                                                style="position:absolute; right:20px; top:50%; transform:translateY(-50%); cursor:pointer; color:#6c757d;">
+                                                <i class="fa fa-eye" id="eyeIcon"></i>
+                                            </span>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -94,6 +98,23 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?=base_url('assets/js/sb-admin-2.min.js');?>"></script>
+
+    <script>
+    function togglePassword() {
+        let pass = document.getElementById("exampleInputPassword");
+        let icon = document.getElementById("eyeIcon");
+
+        if (pass.type === "password") {
+            pass.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            pass.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </body>
 

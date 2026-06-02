@@ -21,10 +21,11 @@
         <th>No</th>
         <th>Kode Peminjaman</th>
         <th>Nama Anggota</th>
+        <th>Judul Buku</th>
         <th>Tanggal Pinjam</th>
         <th>Tanggal Jatuh Tempo</th>
         <th>Status</th>
-        <th>Aksi</th>
+        <th width="250">Aksi</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
         <td align="center"><?= $no++; ?></td>
         <td align="center"><?= $d->kode_peminjaman; ?></td>
         <td><?= $d->nama_anggota; ?></td>
+        <td><?= $d->nama_buku; ?></td>
         <td align="center"><?= $d->tanggal_pinjam; ?></td>
         <td align="center"><?= $d->tanggal_jatuh_tempo; ?></td>
         <td align="center">
@@ -42,7 +44,14 @@
                 <span class="badge badge-success">Kembali</span>
             <?php endif; ?>
         </td>
-        <td align="center">
+            <?php
+                $today = date('Y-m-d');
+                $selisih = strtotime($today) - strtotime($d->tanggal_jatuh_tempo);
+                $terlambat = $selisih > 0
+                ? floor($selisih / 86400)
+                : 0;
+            ?>
+        <td align="center" style="white-space: nowrap;">
             <?php if($d->status == 'dipinjam'): ?>
                 <!-- Tombol Kembalikan -->
                 <button class="btn btn-sm text-white"
@@ -51,6 +60,13 @@
                         data-target="#kembaliModal<?= $d->id ?>">
                     Kembalikan
                 </button>
+
+
+                 <!-- Tombol WhatsApp -->
+                <a href="<?= site_url('whatsapp/kirim_notifikasi/'.$d->id); ?>" class="btn btn-warning btn-sm">
+                    <i class="fab fa-whatsapp"></i>
+                    Kirim WA
+                </a>
 
                 <!-- MODAL KEMBALIKAN -->
                 <div class="modal fade" id="kembaliModal<?= $d->id ?>" tabindex="-1" role="dialog">

@@ -58,5 +58,25 @@ class peminjaman extends CI_Controller {
         $this->session->set_flashdata('success', 'Peminjaman sudah dikembalikan!');
         redirect('peminjaman');
     }
+
+    public function cetak_peminjaman()
+    {
+        $bulan = $this->input->get('bulan');
+
+        $this->db->select('peminjaman.*, anggota.nama_anggota, buku.nama_buku');
+        $this->db->from('peminjaman');
+        $this->db->join('anggota', 'anggota.id = peminjaman.anggota_id');
+        $this->db->join('detail_peminjaman', 'detail_peminjaman.peminjaman_id = peminjaman.id');
+        $this->db->join('buku', 'buku.id = detail_peminjaman.buku_id');
+
+        if($bulan){
+            $this->db->where('DATE_FORMAT(tanggal_pinjam, "%Y-%m")=', $bulan);
+        }
+
+        $data['data'] = $this->db->get()->result();
+        $data['bulan'] = $bulan;
+
+        $this->load->view('laporan/cetak_pinjam', $data);
+    }
 }
 ?>

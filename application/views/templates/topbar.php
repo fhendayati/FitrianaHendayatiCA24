@@ -1,3 +1,10 @@
+<?php
+$CI =& get_instance();
+$user = $CI->db->get_where('users', [
+    'id' => $CI->session->userdata('id_user')
+])->row();
+?>
+
 <nav class="navbar navbar-expand navbar-light bg-gray-500 topar mb-4 static top shadow">
 
 <button id="sidebarToogleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -15,7 +22,9 @@
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400">Profile</i>
         </a>
         <div class="dropdown-divider"></div>
-        <span class="dropdown-item text-muted small">Last login:</span>
+        <span class="dropdown-item text-muted small">
+            Last login: <?= date('d M Y H:i', strtotime($user->last_login)) ?>
+        </span>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<?= site_url('auth/logout')?>">
             <i class="fas fa-sign-out-all fa-sm fa-fw mr-2 text-gray-400">Logout</i>

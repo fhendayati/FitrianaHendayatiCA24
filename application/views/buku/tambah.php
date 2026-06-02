@@ -7,10 +7,22 @@
 
 <form method="post" action="<?= site_url('buku/simpan'); ?>">
 
+     <!-- Kode Buku -->
+    <div class="form-group">
+        <label>Kode Buku</label>
+        <input type="text" name="kode_buku" class="form-control" required>
+    </div>
+
     <!-- Nama Buku -->
     <div class="form-group">
         <label>Nama Buku</label>
         <input type="text" name="nama_buku" class="form-control" required>
+    </div>
+
+    <!-- Nama Buku -->
+    <div class="form-group">
+        <label>Penulis</label>
+        <input type="text" name="penulis" class="form-control" required>
     </div>
 
     <!-- Harga -->

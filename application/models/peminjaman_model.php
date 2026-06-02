@@ -5,9 +5,11 @@ class peminjaman_model extends CI_Model {
 
     public function get_all()
     {
-        $this->db->select('peminjaman.*, anggota.nama_anggota');
+        $this->db->select('peminjaman.*, anggota.nama_anggota, buku.nama_buku');
         $this->db->from('peminjaman');
         $this->db->join('anggota', 'anggota.id = peminjaman.anggota_id');
+        $this->db->join('detail_peminjaman', 'detail_peminjaman.peminjaman_id = peminjaman.id');
+        $this->db->join('buku', 'buku.id = detail_peminjaman.buku_id');
         return $this->db->get()->result();
     }
 
@@ -41,13 +43,14 @@ class peminjaman_model extends CI_Model {
         $pinjam = $this->db->get_where('peminjaman',['id'=>$id])->row();
 
         $today = date('Y-m-d');
-        $terlambat = 0;
-        $denda = 0;
+        $jatuh = $pinjam->tanggal_jatuh_tempo;
 
-        if($today>$pinjam->tanggal_jatuh_tempo){
-            $terlambat = (strtotime($today) - strtotime($pinjam->tanggal_jatuh_tempo)) / 86400;
-        }
+        // HITUNG DENDA
+        $selisih = strtotime($today) - strtotime($jatuh);
+        $terlambat = $selisih > 0 ? floor($selisih / 86400) : 0;
+        $denda = $terlambat * 1000;
 
+        // SIMPAN PENGEMBALIAN
         $this->db->insert('pengembalian', [
             'peminjaman_id' => $id,
             'tanggal_kembali' => $today,
@@ -55,6 +58,7 @@ class peminjaman_model extends CI_Model {
             'denda' => $denda
         ]);
 
+        // UPDATE STATUS
         $this->db->where('id', $id);
         $this->db->update('peminjaman', ['status'=>'kembali']);
 

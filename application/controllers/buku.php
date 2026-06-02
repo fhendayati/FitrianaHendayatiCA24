@@ -45,7 +45,10 @@ class buku extends CI_Controller {
     public function simpan()
     {
         $data = [
+            'kode_buku' => $this->input->post('kode_buku'),
             'nama_buku' => $this->input->post('nama_buku'),
+            'penulis' => $this->input->post('penulis'),
+            'stok' => $this->input->post('stok'),
             'kategori_id' => $this->input->post('kategori_id')
         ];
 
@@ -75,6 +78,7 @@ class buku extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama_buku', 'Nama Buku', 'required');
+        $this->form_validation->set_rules('penulis', 'Stok', 'required');
         $this->form_validation->set_rules('stok', 'Stok', 'required');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required');
 

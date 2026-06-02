@@ -18,7 +18,13 @@
                class="form-control" required>
     </div>
 
-    <!-- Nama Buku -->
+    <!-- Penulis Buku -->
+    <div class="form-group">
+        <label>Penulis</label>
+        <input type="text" name="nama_buku" class="form-control" required>
+    </div>
+
+    <!-- Stok Buku -->
     <div class="form-group">
         <label>Stok</label>
         <input type="number" name="stok" 
